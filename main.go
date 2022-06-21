@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"github.com/shivamk2406/Practice/cmd/app"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	err := app.Start()
+	if err != nil {
+		log.Println(err)
+	}
 }
