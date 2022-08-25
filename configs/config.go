@@ -20,6 +20,21 @@ type AppConfig struct {
 		DisableTLS            bool          `yaml:"disableTLS" env:"SUMMARISE_DB_DISABLE_TLS"`
 		Debug                 bool          `yaml:"debug" env:"SUMMARISE_DB_DEBUG"`
 	} `yaml:"database"`
+	Kafka struct {
+		Consumers struct {
+			ReportInit struct {
+				BootstrapServers []string `yaml:"bootstrapServers"  json:"bootstrap_servers,omitempty"`
+				Topic            string   `yaml:"topic"`
+				Group            string   `yaml:"group"`
+			} `yaml:"report"`
+		} `yaml:"consumers" json:"consumers,omitempty"`
+		Producers struct {
+			ReportInit struct {
+				BootstrapServers []string `yaml:"bootstrapServers" json:"bootstrap_servers,omitempty"`
+				Topic            string   `yaml:"topic"  json:"topic,omitempty"`
+			} `yaml:"report" json:"report,omitempty"`
+		} `yaml:"producers" json:"producers,omitempty"`
+	} `yaml:"kafka" json:"kafka,omitempty"`
 }
 
 func LoadAppConfig() AppConfig {
@@ -29,5 +44,6 @@ func LoadAppConfig() AppConfig {
 		fmt.Println(err)
 		panic(err)
 	}
+	fmt.Println(conf)
 	return conf
 }

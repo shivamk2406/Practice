@@ -9,3 +9,16 @@ database:
   maxConnectionIdletime: 50s
   disableTLS: true
   debug: true
+
+kafka:
+  consumers:
+    report:
+      bootstrapServers:
+        - 172.16.0.11:9092
+      group: get-subs
+      topic: get-subs-local
+  producers:
+    report:
+      bootstrapServers: 
+        - 172.16.0.11:9092
+      topic: get-subs-local

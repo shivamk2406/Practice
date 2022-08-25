@@ -3,11 +3,11 @@ package main
 import (
 	"log"
 
-	"github.com/shivamk2406/Practice/cmd/app"
+	graphqlapp "github.com/shivamk2406/Practice/graphql/cmd/app"
 )
 
 func main() {
-	err := app.Start()
+	err := graphqlapp.Start()
 	if err != nil {
 		log.Println(err)
 	}
