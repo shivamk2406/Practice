@@ -14,11 +14,6 @@ type Resolver struct {
 	repo user.DB
 }
 
-type API interface {
-	CreateUserSubScription(ctx context.Context, m *user.Model) (*user.Model, error)
-	GetUserSubScription(ctx context.Context, m *user.Model) (*user.Model, error)
-}
-
 func NewResolver(repo user.DB) *Resolver {
 	return &Resolver{
 		repo: repo,
