@@ -5,9 +5,6 @@ import (
 	"fmt"
 	"log"
 	"strings"
-
-	"github.com/google/uuid"
-	"github.com/shivamk2406/Practice/internal/service/user"
 )
 
 type RefreshTokenRequest struct {
@@ -41,22 +38,22 @@ func main() {
 	fmt.Println(strings.NewReader(string(payload)))
 }
 
-func getUserInput() *user.Model {
-	var name string
-	var subs string
-	var id string
+// func getUserInput() *user.Model {
+// 	var name string
+// 	var subs string
+// 	var id string
 
-	id = uuid.New().String()
-	fmt.Println("Enter Name")
-	fmt.Scanf("%s", name)
-	fmt.Println("Enter Subs")
-	fmt.Scanf("%s", subs)
+// 	id = uuid.New().String()
+// 	fmt.Println("Enter Name")
+// 	fmt.Scanf("%s", name)
+// 	fmt.Println("Enter Subs")
+// 	fmt.Scanf("%s", subs)
 
-	return createUser(id, name, subs)
-}
+// 	return createUser(id, name, subs)
+// }
 
-func createUser(id string, name string, subs string) *user.Model {
-	return &user.Model{ID: id,
-		Name:         name,
-		Subscription: subs}
-}
+// func createUser(id string, name string, subs string) *user.Model {
+// 	return &user.Model{ID: id,
+// 		Name:         name,
+// 		Subscription: subs}
+// }

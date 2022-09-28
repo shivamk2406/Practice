@@ -2,21 +2,67 @@
 #
 # https://gqlgen.com/getting-started/
 
-type User {
+type Tenant {
   id: ID!
-  name: String!
-  subscription: String!
+  recordid:ID!
+  displayName: String
+  title:String
+  name:String
+  channelName:String
+  defaultLanguage:String
+  paymentURI:String
+  country:Country
+  sdkAttributes:SDKAttributes
+  categories:[Category]
+  checkoutConfig:CheckoutConfig!
 }
 
+type Country {
+  id:ID!
+  name:String
+  fullname:String
+  currencySymbol:String
+  countryCode:String
+  currencyCode:String
+}
+
+type SDKAttributes{
+  walletEnabled:Boolean!
+}
+
+type Category{
+  category_id:ID!
+  name:String
+  user_transaction_count_limit:Int
+  user_transaction_amount_limit:Float
+}
+
+type ConvenienceFeeConfig{
+  execution_script:String
+  title:String
+  sub_text:String
+  popup_text:String
+}
+
+type CheckoutConfig{
+  cart_refund_to_wallet:Boolean
+  convenience_fee_config:ConvenienceFeeConfig
+  payment_modes:[PaymentMode]
+  default_payment_mode:PaymentMode
+
+}
+
+type PaymentMode{
+  payment_mode_id:ID!
+  name:String
+  language_display_text:[MapItem]
+  image_url:String
+}
+
+type MapItem{
+  key:String
+  value:String
+}
 type Query {
-  user(id:ID!):User
-}
-
-input NewUser {
-  text: String!
-  subs:String!
-}
-
-type Mutation {
-  createUser(input: NewUser!): User!
+  GetTenant(id:ID!):Tenant
 }

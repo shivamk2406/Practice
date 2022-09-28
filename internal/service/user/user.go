@@ -3,6 +3,7 @@ package user
 import (
 	"time"
 
+	"gorm.io/datatypes"
 	"gorm.io/gorm"
 )
 
@@ -16,14 +17,14 @@ type Metadata struct {
 
 // Model struct is a row record of the customer table in the summarise database.
 type Model struct {
-	Metadata     Metadata `gorm:"embedded"`
-	ID           string   `gorm:"primary_key;column:id;type:varchar;size:36;" json:"id"`
-	Name         string   `gorm:"column:name;type:varchar;size:1000;" json:"name"`
-	Subscription string   `gorm:"column:subscription;type:type:varchar;size:1000;" json:"subscription"`
+	Metadata Metadata          `gorm:"embedded"`
+	ID       string            `gorm:"primary_key;column:tenant_id;type:varchar;size:36;" json:"tenant_id"`
+	RecordID uint64            `gorm:"AUTO_INCREMENT;column:record_id;type:ubigint;" json:"record_id"`
+	Data     datatypes.JSONMap `gorm:"column:data;type:json;" json:"attributes"`
 }
 
 func (a *Model) TableName() string {
-	return "test_practice"
+	return "tenant"
 }
 
 func (a *Model) BeforeCreate(tx *gorm.DB) (err error) {
@@ -44,13 +45,7 @@ func (a *Model) whereClause() []func(*gorm.DB) *gorm.DB {
 
 	if a.ID != "" {
 		clauses = append(clauses, func(db *gorm.DB) *gorm.DB {
-			return db.Where("id = ?", a.ID)
-		})
-	}
-
-	if a.Subscription != "" {
-		clauses = append(clauses, func(db *gorm.DB) *gorm.DB {
-			return db.Where("subscription = ?", a.Subscription)
+			return db.Where("tenant_id = ?", a.ID)
 		})
 	}
 	return clauses
