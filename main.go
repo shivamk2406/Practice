@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	graphqlapp "github.com/shivamk2406/Practice/graphql/cmd/app"
+	graphqlapp "github.com/shivamk2406/Practice/saleor-poc"
 )
 
 func main() {
