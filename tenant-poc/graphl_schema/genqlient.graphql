@@ -1,0 +1,114 @@
+query GetTenantById($input: ID!) {
+  GetTenant(id:$input) {
+    id
+    recordid
+    channelName
+    title
+    displayName
+    domain
+    paymentURI
+    supportEmail
+    country {
+      countryCode
+    }
+    notificationAttr {
+      refundComment
+    }
+    supportAttributes {
+      ticketTagId
+    }
+    checkoutConfig {
+      payment_provider {
+        set_mandate
+        payment_model
+        payment_gateway_id
+        payment_gateway_type
+      }
+    }
+  }
+}
+
+query GetConfig($input: String!) {
+  GetTenantByDomain(domain:$input) {
+    name
+    id
+    redirectURI
+    configAttr{
+      tenant_id
+      analytics_project_id
+      image_base_uri
+      partner_title
+      locale
+      support_email
+      browser_tab_icon_uri
+      browser_tab_title
+      theme_data{
+        key
+        value
+      }
+      home_screen_banner{
+        title
+        subtitle
+        description
+        image_uri
+      }
+      onboarding_banners{
+        title
+        description
+        image_uri
+      }
+      mobile_onboarding_banners{
+        title
+        description
+        image_uri
+      }
+      enable_country_code
+    }
+    country{
+      countryCode
+    }
+    checkoutConfig {
+      payment_provider {
+        payment_model
+        set_mandate
+      }
+    }
+  }
+}
+
+query ListCountry{
+  ListCountry{
+    name
+    fullName
+    currencySymbol
+    countryCode
+    currencyCode
+    currencyName
+    isdCode
+    currencyDecimals
+    flagLogo
+    mobileValidationRegex
+  }
+}
+
+query GetCountryByIsdCode($input: String!) {
+  GetCountryByIsdCode(isdCode:$input) {
+    name
+    fullName
+    currencySymbol
+    countryCode
+    currencyCode
+    currencyName
+    isdCode
+    currencyDecimals
+    flagLogo
+    mobileValidationRegex
+  }
+}
+
+query GetStatesByCountryCode($input:String!) {
+  GetStatesByCountryCode(countryCode: $input) {
+    id
+    stateName
+  }
+}

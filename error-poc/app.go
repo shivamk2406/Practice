@@ -35,10 +35,13 @@ func (e *AmountLimitEror) Error() string {
 func Start() error {
 	err := errors.New("Hello")
 	err2 := errors.Wrap(err, "World")
-	err3 := errors.Wrap("err2")
-	if errors.As(err2, err1) {
+	//err3 := errors.Wrap("err2")
+	if errors.As(err2, err) {
 		fmt.Println("Error Occurred")
 	}
+
+	//bytes:=[]byte{[123, 34, 116 97 115 107 34 58 34 99 114 109 45 100 97 105 108 121 34 125]}
+	//bytes=
 
 	return nil
 }

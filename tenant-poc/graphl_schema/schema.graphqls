@@ -1,0 +1,161 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+# This is required file for any graphql server. This forms the base for all requests and response.
+# All queries and mutations are reuiqred to be made here first and additionally any certain changes
+# to the schema is also required to updated here.
+
+#In order to add your own custom query or any changes
+#1. Add the required modifications in this file.
+#2. After writing your own schema or mutation or query
+#3. run "go get github.com/99designs/gqlgen@v0.17.15 && go run github.com/99designs/gqlgen generate" generate to generate  initial code for resolver
+#4. Implement the logic there for your query.(schema.resolver.go)
+
+type Tenant {
+  id: ID!
+  recordid:ID!
+  displayName: String
+  domain: String
+  title:String
+  name:String
+  tenantLogo: String
+  channelName:String
+  paymentURI:String
+  defaultLanguage:String
+  providerid: Int
+  supportEmail:String
+  redirectURI:String
+  country:Country
+  sdkAttributes:SDKAttributes
+  notificationAttr:NotificationAttributes
+  categories:[Category]
+  checkoutConfig:CheckoutConfig
+  configAttr:ConfigAttributes
+  subscriptionConfig:SubscriptionConfig
+  otpConfig:OtpConfig
+  supportAttributes:SupportAttributes
+}
+
+type SupportAttributes {
+  ticketTagId:String
+}
+
+type SubscriptionConfig {
+  mandateEndTime:Int
+  mandateAmountType:String
+}
+
+type OtpConfig {
+  maxGenerateOtpAllowed:Int
+  retryWait:Int
+  windowDuration:Int
+  maxVerifyAttempt:Int
+  validityDurationInMin:Int
+}
+
+type Country {
+  id:ID!
+  name:String
+  fullName:String
+  currencySymbol:String
+  countryCode:String
+  currencyCode:String
+  currencyName:String
+  isdCode:String
+  currencyDecimals:Int
+  flagLogo:String
+  mobileValidationRegex:String
+}
+
+type State {
+  id:Int!
+  stateName:String
+}
+
+type SDKAttributes{
+  walletEnabled:Boolean!
+}
+
+type Category{
+  category_id:ID!
+  name:String
+  user_transaction_count_limit:Int
+  user_transaction_amount_limit:Float
+}
+
+type ConvenienceFeeConfig{
+  execution_script:String
+  title:String
+  sub_text:String
+  popup_text:String
+}
+
+type CheckoutConfig{
+  cart_refund_to_wallet:Boolean
+  convenience_fee_config:ConvenienceFeeConfig
+  payment_modes:[PaymentMode]
+  default_payment_mode:PaymentMode
+  payment_provider:PaymentProvider
+
+}
+
+type PaymentMode{
+  payment_mode_id:ID!
+  name:String
+  language_display_text:[MapItem]
+  image_url:String
+}
+
+type ConfigAttributes{
+  tenant_id:ID!
+  analytics_project_id:ID!
+  image_base_uri:String
+  partner_title:String
+  locale:String
+  support_email:String
+  browser_tab_icon_uri:String
+  browser_tab_title:String
+  theme_data:[MapItem]
+  home_screen_banner:Banner
+  onboarding_banners:[Banner]
+  enable_country_code:[String]
+  mobile_onboarding_banners:[Banner]
+}
+
+type Banner{
+  title:String
+  subtitle:String
+  description:String
+  image_uri:String
+}
+
+type PaymentProvider{
+  provider_name:String
+  provider_id:Int
+  payment_gateway_id:String
+  payment_gateway_type:String
+  additional_info:String
+  payment_model:String
+  set_mandate:Boolean
+}
+
+type NotificationAttributes{
+  refundComment:String
+  bgImage:String
+  contactImage:String
+  themePrimaryColor:String
+  timezone:String
+}
+
+type MapItem{
+  key:String
+  value:String
+}
+type Query {
+  GetTenant(id:ID!):Tenant
+  GetTenantByRecordID(id:Int!):Tenant
+  GetTenantByDomain(domain:String!):Tenant
+  ListCountry:[Country]
+  GetCountryByIsdCode(isdCode:String!):Country
+  GetStatesByCountryCode(countryCode:String!):[State]
+}
