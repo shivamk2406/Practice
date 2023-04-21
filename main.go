@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	errorpoc "github.com/shivamk2406/Practice/error-poc"
+	errorpoc "github.com/shivamk2406/Practice/tenant-poc"
 )
 
 func main() {

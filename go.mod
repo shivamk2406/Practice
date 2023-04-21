@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	github.com/99designs/gqlgen v0.17.15
-	github.com/fatih/structs v1.1.0
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/google/uuid v1.3.0
 	github.com/google/wire v0.5.0
@@ -23,13 +22,21 @@ require (
 )
 
 require (
+	github.com/alexflint/go-arg v1.4.2 // indirect
+	github.com/alexflint/go-scalar v1.0.0 // indirect
 	github.com/google/go-cmp v0.5.7 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/matryer/is v1.4.0 // indirect
+	github.com/ttacon/builder v0.0.0-20170518171403-c099f663e1c2 // indirect
+	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
+	golang.org/x/tools v0.1.10 // indirect
+	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
 require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
+	github.com/Khan/genqlient v0.5.0
 	github.com/agnivade/levenshtein v1.1.1 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
@@ -41,8 +48,10 @@ require (
 	github.com/klauspost/compress v1.15.15 // indirect
 	github.com/machinebox/graphql v0.2.2
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
+	github.com/nyaruka/phonenumbers v1.1.6
 	github.com/pierrec/lz4/v4 v4.1.14 // indirect
 	github.com/shopspring/decimal v1.3.1
+	github.com/ttacon/libphonenumber v1.2.1
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	golang.org/x/sys v0.0.0-20220615213510-4f61da869c0c // indirect
