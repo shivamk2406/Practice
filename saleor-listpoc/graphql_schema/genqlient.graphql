@@ -1,0 +1,15 @@
+
+query ListCategories($first: Int!) {
+  products (first: $first){
+    edges {
+      node {
+        id
+        name
+        variants {
+          id
+          name
+        }
+      }
+    }
+  }
+}

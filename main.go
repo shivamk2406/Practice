@@ -3,11 +3,12 @@ package main
 import (
 	"log"
 
-	graphqlapp "github.com/shivamk2406/Practice/saleor-poc"
+	errorpoc "github.com/shivamk2406/Practice/resourcename"
 )
 
 func main() {
-	err := graphqlapp.Start()
+	//err := graphqlapp.Start()
+	err := errorpoc.Start()
 	if err != nil {
 		log.Println(err)
 	}
