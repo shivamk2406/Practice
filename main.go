@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	errorpoc "github.com/shivamk2406/Practice/resourcename"
+	errorpoc "github.com/shivamk2406/Practice/problems"
 )
 
 func main() {
