@@ -1,14 +1,9 @@
 package main
 
 import (
-	"log"
-
-	graphqlapp "github.com/shivamk2406/Practice/saleor-poc"
+	"fmt"
 )
 
 func main() {
-	err := graphqlapp.Start()
-	if err != nil {
-		log.Println(err)
-	}
+	fmt.Println("This is for LLD!!! Stuff")
 }
