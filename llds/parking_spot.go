@@ -29,7 +29,7 @@ type Vehicle struct{
 
 type ParkingSpot struct {
 	Available bool
-	VehicleDetails Vehicle
+VehicleDetails Vehicle
 	VehicleCategory VehicleType
 	Id string
 }
