@@ -1,10 +1,9 @@
 module github.com/shivamk2406/Practice
 
-go 1.18
+go 1.24
 
 require (
 	github.com/99designs/gqlgen v0.17.15
-	github.com/fatih/structs v1.1.0
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/google/uuid v1.3.0
 	github.com/google/wire v0.5.0
